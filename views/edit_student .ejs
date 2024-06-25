@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+        
+                <title>Edit New Student</title>
+        
+        </head>
+        <body>
+                <h1>Edit New Student</h1> 
+                <form action="/students/<%= student._id %>?_method=PUT" method="POST">
+                       
+                    <div>
+                           <label for="firstname"> firstname:</label>
+                           <input type="text" id="firstname" name="firstname" value="<%= student.firstname %>" required/>
+                    </div>
+                    <div>
+                           <label for="lastname"> lastname:</label>
+                           <input type="text" id="lastname" name="lastname" value="<%= student.lastname %>" required/>
+                    </div>
+                    <div>
+                           <label for="birthDate"> birthDate:</label>
+                           <input type="date" id="birthDate" name="birthDate" value="<%= new Date (student.birthDate).toISOString().split('T')[0] %>" required/>
+                    </div>
+                    <button type="submit">update Student</button>
+                </form>
+                <a href="/student/new">Add New Student</a>
+       
+        </body>
+</html>
