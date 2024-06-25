@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+        <head>
+        
+                <title>Students List</title>
+        
+        </head>
+        <body>
+                <h1>Students List</h1>
+                <a href="/students/new">Add New Student</a>
+                <table border="1">
+                        <thead>
+                            <tr>
+                                <th>firstname</th>
+                                <th>lastname</th>
+                                <th>birthDate</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% students.forEach(function(student) { %>
+                                       <tr>
+                                             <td><%= student.firstname %></td>
+                                             <td><%= student.lastname %></td>
+                                             <td><%= new Date (student.birthDate).toLocaleDateString() %></td>
+                                             <td>
+                                                    <a href="/students/<%= student._id %>/edit">Edit</a>
+                                                    <form action="/students/<%= student._id %>?_method=DELETE" method="POST" style="display:inline ;">
+                                                        <button type="submit">Delete</button>
+                                                    </form>
+                                             </td>
+                                       </tr>
+                            <% }); %>
+                        </tbody>
+                </table>
+        </body>
+</html>
